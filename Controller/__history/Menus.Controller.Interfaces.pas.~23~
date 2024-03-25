@@ -1,0 +1,47 @@
+unit Menus.Controller.Interfaces;
+
+interface
+
+uses
+  System.Classes,
+  FMX.Types;
+
+type
+  IControllerListBoxItensDefault = interface;
+  IControllerListBoxDefault = interface;
+
+  IControllerListBoxItensForms = interface
+    ['{3C8ED9C0-2FD6-453F-8B5B-96BE32B522C9}']
+  end;
+
+  IControllerListBoxItensFactory = interface
+    ['{9D2B2596-208A-4BE8-9EDC-CA21F8AD8AF6}']
+    function Default: IControllerListBoxItensDefault;
+  end;
+
+  IControllerListBoxFactory = interface
+    ['{77BCB17E-CB36-41F4-A043-42E64716A47F}']
+    function Default(AContainer: TComponent): IControllerListBoxDefault;
+  end;
+
+  IControllerListBoxItensDefault = interface
+    ['{398F470B-7BD2-437C-B271-365EA303F558}']
+    function Name(AValue: string): IControllerListBoxItensDefault;
+    function Text(AValue: string): IControllerListBoxItensDefault;
+    function StyleLookup(AValue: string): IControllerListBoxItensDefault;
+    function OnClick(AValue: TNotifyEvent): IControllerListBoxItensDefault;
+    function Item: TFMXObject;
+  end;
+
+  IControllerListBoxDefault = interface
+    ['{4C059DF4-7D91-4458-A794-EECEB98F5DEE}']
+    function Name(AValue: string): IControllerListBoxDefault;
+    function Align(AValue: TAlignLayout): IControllerListBoxDefault;
+    function ItemHeight(AValue: Integer): IControllerListBoxDefault;
+    function AddItem(AValue: TFMXObject): IControllerListBoxDefault;
+    function Lista: TFMXObject;
+  end;
+
+implementation
+
+end.

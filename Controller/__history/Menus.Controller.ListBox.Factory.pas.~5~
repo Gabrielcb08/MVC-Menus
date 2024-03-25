@@ -1,0 +1,20 @@
+unit Menus.Controller.ListBox.Factory;
+
+interface
+
+uses
+  Menus.Controller.Interfaces;
+
+type
+  TControllerListBoxFactory = class(TInterfacedObject, IControllerListBoxFactory)
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: IControllerListBoxFactory
+  end;
+
+implementation
+
+
+
+end.

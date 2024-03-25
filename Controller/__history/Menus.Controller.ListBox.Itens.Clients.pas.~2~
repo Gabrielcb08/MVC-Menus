@@ -1,0 +1,21 @@
+unit Menus.Controller.ListBox.Itens.Clients;
+
+interface
+
+uses
+  Menus.Controller.Interfaces,
+
+  FMX.Types;
+
+type
+  TControllerListBoxItensClients = class(TInterfacedObject, IControllerListBoxItensForms)
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: IControllerListBoxItensForms;
+    function Show: TFMXObject;
+  end;
+
+implementation
+
+end.

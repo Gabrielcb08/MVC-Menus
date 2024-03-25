@@ -1,0 +1,71 @@
+unit Menus.Controller.ListBox.Default;
+
+interface
+
+uses
+  Menus.Controller.Interfaces,
+
+  System.Classes,
+  FMX.ListBox,
+  System.SysUtils, FMX.Types;
+
+type
+  TControllerListBoxDefault = class(TInterfacedObject, IControllerListBoxDefault)
+  private
+    FContainer: TComponent;
+    FListBox: TListBox;
+  public
+    constructor Create(AContainer: TComponent);
+    destructor Destroy; override;
+    class function New(AContainer: TComponent): IControllerListBoxDefault;
+    function Name(AValue: string): IControllerListBoxDefault;
+    function Align(AValue: TAlignLayout): IControllerListBoxDefault;
+    function ItemHeight(AValue: Integer): IControllerListBoxDefault;
+  end;
+
+implementation
+
+{ TControllerListBoxDefault }
+
+function TControllerListBoxDefault.Align(
+  AValue: TAlignLayout): IControllerListBoxDefault;
+begin
+  Result := Self;
+  FListBox.Align := AValue;
+end;
+
+constructor TControllerListBoxDefault.Create(AContainer: TComponent);
+begin
+  FContainer := AContainer;
+  FListBox := TListBox.Create(nil);
+  FListBox.Name := 'ListaDefault';
+  FListBox.Align := TAlignLayout.Client;
+  FListBox.ItemHeight := 60;
+end;
+
+destructor TControllerListBoxDefault.Destroy;
+begin
+  FreeAndNil(FListBox);
+
+  inherited;
+end;
+
+function TControllerListBoxDefault.ItemHeight(
+  AValue: Integer): IControllerListBoxDefault;
+begin
+  Result := Self;
+  FListBox.ItemHeight := AValue;
+end;
+
+function TControllerListBoxDefault.Name(
+  AValue: string): IControllerListBoxDefault;
+begin
+
+end;
+
+class function TControllerListBoxDefault.New(AContainer: TComponent): IControllerListBoxDefault;
+begin
+  Result := Self.Create(AContainer)
+end;
+
+end.
