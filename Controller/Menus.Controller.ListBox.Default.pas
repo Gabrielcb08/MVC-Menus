@@ -49,7 +49,7 @@ end;
 constructor TControllerListBoxDefault.Create(AContainer: TComponent);
 begin
   FContainer := AContainer;
-  FListBox := TListBox.Create(nil);
+  FListBox := TListBox.Create(AContainer);
   FListBox.Name := 'ListaDefault';
   FListBox.Align := TAlignLayout.Client;
   FListBox.ItemHeight := 60;

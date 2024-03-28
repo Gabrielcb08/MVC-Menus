@@ -5,6 +5,7 @@ interface
 uses
   Menus.Controller.Interfaces,
   Menus.Controller.ListBox.Itens.Factory,
+  Menus.Controller.Forms.Default,
 
   FMX.Types;
 
@@ -14,6 +15,7 @@ type
     destructor Destroy; override;
     class function New: IControllerListBoxItensForms;
     function Show: TFMXObject;
+    procedure DoClick(Sender: TObject);
   end;
 
 implementation
@@ -31,6 +33,11 @@ begin
   inherited;
 end;
 
+procedure TControllerListBoxItensProducts.DoClick(Sender: TObject);
+begin
+  TControllerFormsDefault.CreateForm('TFrmProducts');
+end;
+
 class function TControllerListBoxItensProducts.New: IControllerListBoxItensForms;
 begin
   Result := Self.Create;
@@ -42,6 +49,7 @@ begin
               .Default
               .Name('btnProducts')
               .Text('Produtos')
+              .OnClick(DoClick)
               .Item;
 end;
 

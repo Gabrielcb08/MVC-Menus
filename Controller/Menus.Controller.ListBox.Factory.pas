@@ -5,8 +5,11 @@ interface
 uses
   Menus.Controller.Interfaces,
   Menus.Controller.ListBox.Default,
+  Menus.Controller.ListBox.Main,
+  Menus.Controller.ListBox.Products,
+  Menus.Controller.ListBox.Clients,
 
-  System.Classes, Menus.Controller.ListBox.Main;
+  System.Classes;
 
 type
   TControllerListBoxFactory = class(TInterfacedObject, IControllerListBoxFactory)
@@ -16,6 +19,8 @@ type
     class function New: IControllerListBoxFactory;
     function Default(AContainer: TComponent): IControllerListBoxDefault;
     function Main(AContainer: TComponent): IControllerListBoxMenus;
+    function Products(AContainer: TComponent): IControllerListBoxMenus;
+    function Clients(AContainer: TComponent): IControllerListBoxMenus;
   end;
 
 implementation
@@ -23,6 +28,12 @@ implementation
 
 
 { TControllerListBoxFactory }
+
+function TControllerListBoxFactory.Clients(
+  AContainer: TComponent): IControllerListBoxMenus;
+begin
+  Result := TControllerListBoxClients.New(AContainer);
+end;
 
 constructor TControllerListBoxFactory.Create;
 begin
@@ -49,6 +60,12 @@ end;
 class function TControllerListBoxFactory.New: IControllerListBoxFactory;
 begin
   Result := Self.Create;
+end;
+
+function TControllerListBoxFactory.Products(
+  AContainer: TComponent): IControllerListBoxMenus;
+begin
+  Result := TControllerListBoxProducts.New(AContainer);
 end;
 
 end.

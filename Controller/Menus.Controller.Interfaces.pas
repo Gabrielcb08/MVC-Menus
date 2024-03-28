@@ -31,6 +31,8 @@ type
     ['{77BCB17E-CB36-41F4-A043-42E64716A47F}']
     function Default(AContainer: TComponent): IControllerListBoxDefault;
     function Main(AContainer: TComponent): IControllerListBoxMenus;
+    function Products(AContainer: TComponent): IControllerListBoxMenus;
+    function Clients(AContainer: TComponent): IControllerListBoxMenus;
   end;
 
   IControllerListBoxItensDefault = interface

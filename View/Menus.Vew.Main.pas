@@ -3,12 +3,22 @@ unit Menus.Vew.Main;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Graphics,
+  FMX.Dialogs,
+  FMX.Layouts,
+
   Menus.Controller.ListBox.Factory;
 
 type
-  TForm1 = class(TForm)
+  TFrmMain = class(TForm)
     Layout1: TLayout;
     procedure FormCreate(Sender: TObject);
   private
@@ -18,13 +28,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FrmMain: TFrmMain;
 
 implementation
 
 {$R *.fmx}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFrmMain.FormCreate(Sender: TObject);
 begin
   TControllerListBoxFactory.New
     .Main(Layout1)
