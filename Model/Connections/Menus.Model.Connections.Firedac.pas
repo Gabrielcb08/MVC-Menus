@@ -12,7 +12,7 @@ uses
   Firedac.Phys.FB;
 
 type
-  TControllerConectionsFiredac = class(TInterfacedObject, IModelConnection,
+  TModelConectionsFiredac = class(TInterfacedObject, IModelConnection,
     IModelConnectionParams)
   private
     FConnection: TFDConnection;
@@ -38,13 +38,20 @@ type
     function Server(AValue: String): IModelConnectionParams;
     function Port(AValue: Integer): IModelConnectionParams;
     function EndParams: IModelConnection;
+    function Connect: IModelConnection;
   end;
 
 implementation
 
-{ TControllerConectionsFiredac }
+{ TModelConectionsFiredac }
 
-constructor TControllerConectionsFiredac.Create;
+function TModelConectionsFiredac.Connect: IModelConnection;
+begin
+  Result := Self;
+  FConnection.Connected := True;
+end;
+
+constructor TModelConectionsFiredac.Create;
 begin
   FConnection := TFDConnection.Create(Nil);
   FDGUIxWaitCursor1 := TFDGUIxWaitCursor.Create(Nil);
@@ -52,14 +59,14 @@ begin
   ReadParams;
 end;
 
-function TControllerConectionsFiredac.DataBase(AValue: String)
+function TModelConectionsFiredac.DataBase(AValue: String)
   : IModelConnectionParams;
 begin
   Result := Self;
   FDataBase := AValue;
 end;
 
-destructor TControllerConectionsFiredac.Destroy;
+destructor TModelConectionsFiredac.Destroy;
 begin
   FreeAndNil(FDGUIxWaitCursor1);
   FreeAndNil(FDPhysFBDriverLink1);
@@ -67,24 +74,24 @@ begin
   inherited;
 end;
 
-function TControllerConectionsFiredac.DriverID(AValue: String)
+function TModelConectionsFiredac.DriverID(AValue: String)
   : IModelConnectionParams;
 begin
   Result := Self;
   FDriverID := AValue;
 end;
 
-function TControllerConectionsFiredac.EndConnection: TComponent;
+function TModelConectionsFiredac.EndConnection: TComponent;
 begin
   Result := FConnection;
 end;
 
-function TControllerConectionsFiredac.EndParams: IModelConnection;
+function TModelConectionsFiredac.EndParams: IModelConnection;
 begin
   Result := Self;
 end;
 
-procedure TControllerConectionsFiredac.ReadParams;
+procedure TModelConectionsFiredac.ReadParams;
 begin
   FConnection.Params.DataBase := FDataBase;
   FConnection.Params.UserName := FUserName;
@@ -94,38 +101,38 @@ begin
   FConnection.Params.Add('Port' + FPort.ToString);
 end;
 
-class function TControllerConectionsFiredac.New: IModelConnection;
+class function TModelConectionsFiredac.New: IModelConnection;
 begin
   Result := Self.Create;
 end;
 
-function TControllerConectionsFiredac.Params: IModelConnectionParams;
+function TModelConectionsFiredac.Params: IModelConnectionParams;
 begin
   Result := Self;
 end;
 
-function TControllerConectionsFiredac.Password(
+function TModelConectionsFiredac.Password(
   AValue: String): IModelConnectionParams;
 begin
   Result := Self;
   FPassword := AValue;
 end;
 
-function TControllerConectionsFiredac.Port(AValue: Integer)
+function TModelConectionsFiredac.Port(AValue: Integer)
   : IModelConnectionParams;
 begin
   Result := Self;
   FPort := AValue;
 end;
 
-function TControllerConectionsFiredac.Server(AValue: String)
+function TModelConectionsFiredac.Server(AValue: String)
   : IModelConnectionParams;
 begin
   Result := Self;
   FServer := AValue;
 end;
 
-function TControllerConectionsFiredac.UserName(AValue: String)
+function TModelConectionsFiredac.UserName(AValue: String)
   : IModelConnectionParams;
 begin
   Result := Self;

@@ -333,6 +333,15 @@
         <DCCReference Include="Controller\Menus.Controller.Forms.Default.pas"/>
         <DCCReference Include="Model\Connections\Menus.Model.Connections.Firedac.pas"/>
         <DCCReference Include="Model\Connections\Menus.Model.Connections.Interfaces.pas"/>
+        <DCCReference Include="Model\Connections\Menus.Model.Connections.TableFiredac.pas"/>
+        <DCCReference Include="Model\Connections\Menus.Model.Connections.Factory.Connection.pas"/>
+        <DCCReference Include="Model\Connections\Menus.Model.Connections.Factory.DataSet.pas"/>
+        <DCCReference Include="Model\Entity\Menus.Model.Entity.Interfaces.pas"/>
+        <DCCReference Include="Model\Entity\Menus.Model.Entity.Products.pas"/>
+        <DCCReference Include="Model\Entity\Menus.Model.Entity.Factory.pas"/>
+        <DCCReference Include="Controller\Connections\Menus.Controller.Connections.Interfaces.pas"/>
+        <DCCReference Include="Controller\Connections\Menus.Controller.Connections.Factory.Connection.pas"/>
+        <DCCReference Include="Controller\Connections\Menus.Controller.Connections.Factory.Dataset.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
